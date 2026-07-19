@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillBridge AI | Resume Analyzer</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ===================== NAVBAR ===================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-cpu"></i>
+                SkillBridge AI
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#upload">Analyze</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#results">Results</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <span class="badge bg-primary px-3 py-2 mb-3">
+
+                        AI Powered Resume Analyzer
+
+                    </span>
+
+                    <h1>
+
+                        Improve Your Resume with AI
+
+                    </h1>
+
+                    <p>
+
+                        Upload your resume and instantly receive an ATS Score,
+                        Missing Skills Analysis, and a personalized Learning
+                        Roadmap generated using AI.
+
+                    </p>
+
+                    <a href="#upload" class="btn btn-primary btn-lg mt-3">
+
+                        Analyze Resume
+
+                    </a>
+
+                </div>
+
+                <div class="col-lg-6 text-center">
+
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800"
+                        class="img-fluid hero-image" alt="AI Resume">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+
+    <section id="features" class="py-5">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2>
+
+                    Why SkillBridge AI?
+
+                </h2>
+
+                <p>
+
+                    Smart resume analysis powered by AI.
+
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-file-earmark-text feature-icon"></i>
+
+                        <h4>
+
+                            ATS Analysis
+
+                        </h4>
+
+                        <p>
+
+                            Get an ATS compatibility score for your resume.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-lightbulb feature-icon"></i>
+
+                        <h4>
+
+                            Skill Gap Detection
+
+                        </h4>
+
+                        <p>
+
+                            Discover missing technical skills required by recruiters.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-mortarboard feature-icon"></i>
+
+                        <h4>
+
+                            Learning Roadmap
+
+                        </h4>
+
+                        <p>
+
+                            Receive personalized learning modules and recommended resources.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== UPLOAD ===================== -->
+
+    <section id="upload" class="upload-section">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8">
+
+                    <div class="upload-card">
+
+                        <h2 class="text-center mb-4">
+
+                            Upload Resume
+
+                        </h2>
+
+                        <form id="resumeForm">
+
+                            <div class="upload-box">
+
+                                <i class="bi bi-cloud-arrow-up upload-icon"></i>
+
+                                <h5>
+
+                                    Drag & Drop PDF Here
+
+                                </h5>
+
+                                <p>
+
+                                    or
+
+                                </p>
+
+                                <input type="file" id="resume" accept=".pdf" class="form-control">
+
+                            </div>
+
+                            <button class="btn btn-primary btn-lg w-100 mt-4" type="submit">
+
+                                Analyze Resume
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== LOADING ===================== -->
+
+    <div id="loadingOverlay">
+
+        <div class="loading-card">
+
+            <div class="spinner-border text-primary" style="width:70px;height:70px;">
+            </div>
+
+            <h3 class="mt-4">
+
+                Analyzing Resume...
+
+            </h3>
+
+            <p>
+
+                AI is generating your personalized report.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ===================== RESULTS ===================== -->
+
+    <section id="results" class="results-section" style="display: none;">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- ATS SCORE -->
+
+                <div class="col-lg-4">
+
+                    <div class="dashboard-card text-center">
+
+                        <h4>
+
+                            ATS Score
+
+                        </h4>
+
+                        <div id="atsCircle">
+
+                            <h1 id="atsScore">
+
+                                0%
+
+                            </h1>
+
+                        </div>
+
+                        <div class="progress mt-4">
+
+                            <div id="atsProgress" class="progress-bar" style="width:0%">
+                            </div>
+
+                        </div>
+
+                        <p id="atsStatus" class="mt-3"></p>
+
+                    </div>
+
+                </div>
+                <!-- MISSING SKILLS -->
+
+                <div class="col-lg-8">
+
+                    <div class="dashboard-card">
+
+                        <h4 class="mb-4">
+
+                            Missing Skills
+
+                        </h4>
+
+                        <div id="missingSkills" class="d-flex flex-wrap gap-2">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- LEARNING ROADMAP -->
+
+            <div class="row mt-5">
+
+                <div class="col-12">
+
+                    <div class="dashboard-card">
+
+                        <h2 id="roadmapTitle">
+
+                            Learning Roadmap
+
+                        </h2>
+
+                        <p id="roadmapDescription" class="text-muted">
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- MODULES -->
+
+            <div class="row mt-4" id="modulesContainer">
+
+                <!-- JavaScript will generate roadmap cards here -->
+
+            </div>
+
+            <!-- ANALYZE AGAIN -->
+
+            <div class="text-center mt-5">
+
+                <button class="btn btn-outline-primary btn-lg" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+                    <i class="bi bi-arrow-repeat"></i>
+
+                    Analyze Another Resume
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-4">
+
+                    <h4>
+
+                        SkillBridge AI
+
+                    </h4>
+
+                    <p>
+
+                        AI-powered Resume Analyzer with ATS scoring,
+                        Skill Gap Detection and Personalized
+                        Learning Roadmaps.
+
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <h5>
+
+                        Features
+
+                    </h5>
+
+                    <ul class="footer-links">
+
+                        <li>ATS Resume Analysis</li>
+
+                        <li>Skill Gap Detection</li>
+
+                        <li>Learning Roadmaps</li>
+
+                        <li>AI Recommendations</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <h5>
+
+                        Project
+
+                    </h5>
+
+                    <ul class="footer-links">
+
+                        <li>IBM Internship Project</li>
+
+                        <li>Flask + Python</li>
+
+                        <li>n8n Workflow</li>
+
+                        <li>Bootstrap 5</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+
+                © 2026 SkillBridge AI • All Rights Reserved
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main JavaScript -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
