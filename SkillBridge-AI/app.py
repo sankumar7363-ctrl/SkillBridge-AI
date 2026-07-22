@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 
-N8N_WEBHOOK = "http://localhost:5678/webhook/resume-analysis"
+N8N_WEBHOOK = "https://hemi.app.n8n.cloud/webhook/resume-analysis"
 
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
